@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmoClass.cs" />
     <Compile Include="Bullets.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyBuletsClass.cs" />
@@ -261,6 +262,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LevelUp.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Ammo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leader_board_Button-Final.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextWin.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Crown.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextWin.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

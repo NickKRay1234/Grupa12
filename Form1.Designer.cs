@@ -36,7 +36,6 @@
             this.ForwardMoveTimer = new System.Windows.Forms.Timer(this.components);
             this.enemyMoveTimer = new System.Windows.Forms.Timer(this.components);
             this.ColisionTimer = new System.Windows.Forms.Timer(this.components);
-            this.EnemyBulletsMoveTimer = new System.Windows.Forms.Timer(this.components);
             this.PointsLabel = new System.Windows.Forms.Label();
             this.StarsMoveTimer = new System.Windows.Forms.Timer(this.components);
             this.PauseLabel = new System.Windows.Forms.Label();
@@ -46,8 +45,15 @@
             this.Text_Plane_3 = new System.Windows.Forms.TextBox();
             this.Text_Plane_2 = new System.Windows.Forms.TextBox();
             this.Text_Plane_1 = new System.Windows.Forms.TextBox();
-            this.LevelUpText = new System.Windows.Forms.TextBox();
             this.LevelUpTimer = new System.Windows.Forms.Timer(this.components);
+            this.EnemyBulletForm = new System.Windows.Forms.Timer(this.components);
+            this.AmmoApearingTImer = new System.Windows.Forms.Timer(this.components);
+            this.LeaderBoard = new System.Windows.Forms.Label();
+            this.Crown = new System.Windows.Forms.PictureBox();
+            this.Win_Text = new System.Windows.Forms.PictureBox();
+            this.leader_Board_Button_Form = new System.Windows.Forms.PictureBox();
+            this.unmuteBotton = new System.Windows.Forms.PictureBox();
+            this.muteBotton = new System.Windows.Forms.PictureBox();
             this.Polish_Polish = new System.Windows.Forms.Button();
             this.Heart3 = new System.Windows.Forms.PictureBox();
             this.Heart2 = new System.Windows.Forms.PictureBox();
@@ -69,6 +75,12 @@
             this.ReplayButton = new System.Windows.Forms.Button();
             this.Main_Text = new System.Windows.Forms.PictureBox();
             this.newRec = new System.Windows.Forms.PictureBox();
+            this.LevelUpText = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.Crown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Win_Text)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leader_Board_Button_Form)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unmuteBotton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.muteBotton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Heart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Heart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Heart1)).BeginInit();
@@ -113,11 +125,6 @@
             this.ColisionTimer.Interval = 1;
             this.ColisionTimer.Tick += new System.EventHandler(this.ColisionTimer_Tick);
             // 
-            // EnemyBulletsMoveTimer
-            // 
-            this.EnemyBulletsMoveTimer.Interval = 1000;
-            this.EnemyBulletsMoveTimer.Tick += new System.EventHandler(this.EnemyBulletsMoveTimer_Tick);
-            // 
             // PointsLabel
             // 
             this.PointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -138,17 +145,17 @@
             // 
             this.PauseLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PauseLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.PauseLabel.Location = new System.Drawing.Point(771, 610);
+            this.PauseLabel.Location = new System.Drawing.Point(780, 367);
             this.PauseLabel.Name = "PauseLabel";
             this.PauseLabel.Size = new System.Drawing.Size(175, 46);
             this.PauseLabel.TabIndex = 19;
-            this.PauseLabel.Text = "(P) to paus";
+            this.PauseLabel.Text = "(P) to pause";
             // 
             // ResumLabel
             // 
             this.ResumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResumLabel.ForeColor = System.Drawing.Color.Yellow;
-            this.ResumLabel.Location = new System.Drawing.Point(771, 590);
+            this.ResumLabel.Location = new System.Drawing.Point(784, 348);
             this.ResumLabel.Name = "ResumLabel";
             this.ResumLabel.Size = new System.Drawing.Size(184, 65);
             this.ResumLabel.TabIndex = 20;
@@ -180,14 +187,13 @@
             this.Text_Plane_3.ReadOnly = true;
             this.Text_Plane_3.Size = new System.Drawing.Size(264, 89);
             this.Text_Plane_3.TabIndex = 27;
-            this.Text_Plane_3.Text = "Death Angel\r\nHP: 1\r\nDamage: 30\r\n";
+            this.Text_Plane_3.Text = "Death Angel\r\nHP: 1\r\nDamage: 3\r\nSpeed 9\r\n";
             this.Text_Plane_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Text_Plane_2
             // 
             this.Text_Plane_2.BackColor = System.Drawing.SystemColors.Desktop;
             this.Text_Plane_2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Text_Plane_2.Enabled = false;
             this.Text_Plane_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.Text_Plane_2.ForeColor = System.Drawing.Color.White;
             this.Text_Plane_2.Location = new System.Drawing.Point(636, 274);
@@ -197,7 +203,7 @@
             this.Text_Plane_2.ReadOnly = true;
             this.Text_Plane_2.Size = new System.Drawing.Size(264, 89);
             this.Text_Plane_2.TabIndex = 30;
-            this.Text_Plane_2.Text = "Naruto\r\nHP: 2\r\nDamage: 20\r\n";
+            this.Text_Plane_2.Text = "Naruto\r\nHP: 2\r\nDamage: 2\r\nSpeed 7\r\n\r\n\r\n";
             this.Text_Plane_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Text_Plane_1
@@ -213,28 +219,91 @@
             this.Text_Plane_1.ReadOnly = true;
             this.Text_Plane_1.Size = new System.Drawing.Size(264, 89);
             this.Text_Plane_1.TabIndex = 31;
-            this.Text_Plane_1.Text = "Saske\r\nHP: 3\r\nDamage: 40\r\n";
+            this.Text_Plane_1.Text = "Saske\r\nHP: 3\r\nDamage: 1\r\nSpeed 5\r\n\r\n\r\n\r\n";
             this.Text_Plane_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // LevelUpText
-            // 
-            this.LevelUpText.BackColor = System.Drawing.SystemColors.WindowText;
-            this.LevelUpText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LevelUpText.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.LevelUpText.ForeColor = System.Drawing.SystemColors.InactiveBorder;
-            this.LevelUpText.Location = new System.Drawing.Point(363, 58);
-            this.LevelUpText.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LevelUpText.Name = "LevelUpText";
-            this.LevelUpText.Size = new System.Drawing.Size(267, 48);
-            this.LevelUpText.TabIndex = 33;
-            this.LevelUpText.Text = "LEVEL UP!!!!!";
-            this.LevelUpText.Visible = false;
             // 
             // LevelUpTimer
             // 
             this.LevelUpTimer.Enabled = true;
             this.LevelUpTimer.Interval = 1;
             this.LevelUpTimer.Tick += new System.EventHandler(this.LevelUpTimer_Tick);
+            // 
+            // EnemyBulletForm
+            // 
+            this.EnemyBulletForm.Interval = 1000;
+            this.EnemyBulletForm.Tick += new System.EventHandler(this.EnemyBulletForm_Tick);
+            // 
+            // AmmoApearingTImer
+            // 
+            this.AmmoApearingTImer.Interval = 5000;
+            this.AmmoApearingTImer.Tick += new System.EventHandler(this.AmmoApearingTImer_Tick);
+            // 
+            // LeaderBoard
+            // 
+            this.LeaderBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LeaderBoard.ForeColor = System.Drawing.Color.Yellow;
+            this.LeaderBoard.Location = new System.Drawing.Point(274, 0);
+            this.LeaderBoard.Name = "LeaderBoard";
+            this.LeaderBoard.Size = new System.Drawing.Size(405, 535);
+            this.LeaderBoard.TabIndex = 44;
+            this.LeaderBoard.Visible = false;
+            // 
+            // Crown
+            // 
+            this.Crown.Image = ((System.Drawing.Image)(resources.GetObject("Crown.Image")));
+            this.Crown.Location = new System.Drawing.Point(352, 57);
+            this.Crown.Name = "Crown";
+            this.Crown.Size = new System.Drawing.Size(226, 163);
+            this.Crown.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Crown.TabIndex = 46;
+            this.Crown.TabStop = false;
+            this.Crown.Visible = false;
+            // 
+            // Win_Text
+            // 
+            this.Win_Text.Image = ((System.Drawing.Image)(resources.GetObject("Win_Text.Image")));
+            this.Win_Text.Location = new System.Drawing.Point(140, 230);
+            this.Win_Text.Name = "Win_Text";
+            this.Win_Text.Size = new System.Drawing.Size(666, 183);
+            this.Win_Text.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Win_Text.TabIndex = 45;
+            this.Win_Text.TabStop = false;
+            this.Win_Text.Visible = false;
+            // 
+            // leader_Board_Button_Form
+            // 
+            this.leader_Board_Button_Form.Image = global::ProjektGame.Properties.Resources.leader_board_Button_Final;
+            this.leader_Board_Button_Form.Location = new System.Drawing.Point(785, 570);
+            this.leader_Board_Button_Form.Name = "leader_Board_Button_Form";
+            this.leader_Board_Button_Form.Size = new System.Drawing.Size(151, 120);
+            this.leader_Board_Button_Form.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.leader_Board_Button_Form.TabIndex = 43;
+            this.leader_Board_Button_Form.TabStop = false;
+            this.leader_Board_Button_Form.Click += new System.EventHandler(this.LeaderBoard_Click);
+            this.leader_Board_Button_Form.DoubleClick += new System.EventHandler(this.LeaderBoard_DoubleClick);
+            // 
+            // unmuteBotton
+            // 
+            this.unmuteBotton.Image = ((System.Drawing.Image)(resources.GetObject("unmuteBotton.Image")));
+            this.unmuteBotton.Location = new System.Drawing.Point(855, 426);
+            this.unmuteBotton.Name = "unmuteBotton";
+            this.unmuteBotton.Size = new System.Drawing.Size(100, 100);
+            this.unmuteBotton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.unmuteBotton.TabIndex = 42;
+            this.unmuteBotton.TabStop = false;
+            this.unmuteBotton.Visible = false;
+            this.unmuteBotton.Click += new System.EventHandler(this.unmuteBotton_Click);
+            // 
+            // muteBotton
+            // 
+            this.muteBotton.Image = ((System.Drawing.Image)(resources.GetObject("muteBotton.Image")));
+            this.muteBotton.Location = new System.Drawing.Point(855, 426);
+            this.muteBotton.Name = "muteBotton";
+            this.muteBotton.Size = new System.Drawing.Size(100, 100);
+            this.muteBotton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.muteBotton.TabIndex = 41;
+            this.muteBotton.TabStop = false;
+            this.muteBotton.Click += new System.EventHandler(this.muteBotton_Click);
             // 
             // Polish_Polish
             // 
@@ -505,7 +574,7 @@
             // 
             this.Main_Text.BackColor = System.Drawing.Color.Transparent;
             this.Main_Text.Image = global::ProjektGame.Properties.Resources.Text;
-            this.Main_Text.Location = new System.Drawing.Point(201, 96);
+            this.Main_Text.Location = new System.Drawing.Point(195, 93);
             this.Main_Text.Margin = new System.Windows.Forms.Padding(4);
             this.Main_Text.Name = "Main_Text";
             this.Main_Text.Size = new System.Drawing.Size(421, 115);
@@ -524,6 +593,17 @@
             this.newRec.TabStop = false;
             this.newRec.Visible = false;
             // 
+            // LevelUpText
+            // 
+            this.LevelUpText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LevelUpText.ForeColor = System.Drawing.Color.Yellow;
+            this.LevelUpText.Location = new System.Drawing.Point(392, 15);
+            this.LevelUpText.Name = "LevelUpText";
+            this.LevelUpText.Size = new System.Drawing.Size(206, 48);
+            this.LevelUpText.TabIndex = 47;
+            this.LevelUpText.Text = "Level up";
+            this.LevelUpText.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -531,6 +611,13 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(979, 848);
+            this.Controls.Add(this.LevelUpText);
+            this.Controls.Add(this.Crown);
+            this.Controls.Add(this.Win_Text);
+            this.Controls.Add(this.LeaderBoard);
+            this.Controls.Add(this.leader_Board_Button_Form);
+            this.Controls.Add(this.unmuteBotton);
+            this.Controls.Add(this.muteBotton);
             this.Controls.Add(this.Polish_Polish);
             this.Controls.Add(this.Heart3);
             this.Controls.Add(this.Heart2);
@@ -552,7 +639,6 @@
             this.Controls.Add(this.Plane_2_Choosed);
             this.Controls.Add(this.Plane_3_Choosed);
             this.Controls.Add(this.Plane_1_Choosed);
-            this.Controls.Add(this.LevelUpText);
             this.Controls.Add(this.Change_Plane_Background);
             this.Controls.Add(this.LevelUpGif);
             this.Controls.Add(this.Play);
@@ -569,6 +655,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            ((System.ComponentModel.ISupportInitialize)(this.Crown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Win_Text)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leader_Board_Button_Form)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unmuteBotton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.muteBotton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Heart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Heart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Heart1)).EndInit();
@@ -604,7 +695,6 @@
         private System.Windows.Forms.PictureBox Main_Languages;
         private System.Windows.Forms.PictureBox Plane_Changes_Menu;
         private System.Windows.Forms.Button Play;
-        private System.Windows.Forms.Timer EnemyBulletsMoveTimer;
         private System.Windows.Forms.Button ReplayButton;
         private System.Windows.Forms.Label PointsLabel;
         private System.Windows.Forms.Timer StarsMoveTimer;
@@ -623,13 +713,21 @@
         private System.Windows.Forms.TextBox Text_Plane_2;
         private System.Windows.Forms.TextBox Text_Plane_1;
         private System.Windows.Forms.PictureBox LevelUpGif;
-        private System.Windows.Forms.TextBox LevelUpText;
         private System.Windows.Forms.Timer LevelUpTimer;
         private System.Windows.Forms.PictureBox Heart1;
         private System.Windows.Forms.PictureBox Heart2;
         private System.Windows.Forms.PictureBox Heart3;
         private System.Windows.Forms.Button Polish_Polish;
         private System.Windows.Forms.PictureBox newRec;
+        private System.Windows.Forms.Timer EnemyBulletForm;
+        private System.Windows.Forms.PictureBox muteBotton;
+        private System.Windows.Forms.PictureBox unmuteBotton;
+        public System.Windows.Forms.Timer AmmoApearingTImer;
+        private System.Windows.Forms.PictureBox leader_Board_Button_Form;
+        private System.Windows.Forms.Label LeaderBoard;
+        private System.Windows.Forms.PictureBox Win_Text;
+        private System.Windows.Forms.PictureBox Crown;
+        private System.Windows.Forms.Label LevelUpText;
     }
 }
 

@@ -35,9 +35,12 @@ namespace ProjektGame
 
         public void BulletTimerEvent(object sender, EventArgs e)
         {
+            //if bullet location is less then -50, bullet must be destroyed
             bullet.Top -= bulletSpeed;
+            //checking location
             if (bullet.Top < -50)
             {
+                //destroing of an bullet
                 bulletTimer.Stop();
                 bulletTimer.Dispose();
                 bullet.Dispose();
@@ -45,7 +48,8 @@ namespace ProjektGame
                 bullet = null;
             }
         }
-        
+
+        //setters of image for different planes 
         public void setImageFirst()
         {
             bullet.Image = Properties.Resources.Bullet1;
